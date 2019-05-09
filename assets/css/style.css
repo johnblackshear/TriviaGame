@@ -49,3 +49,14 @@ position: relative;
     height: 250px;
     width: 250px;
 }
+#answerrow{
+    margin: 30px;
+}
+
+#answerbox{
+    color: #ffffff;
+    border: 3px solid #ffffff;
+    margin:  auto;
+    height: 250px;
+    width: 500px;
+}
