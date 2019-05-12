@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+var score = 0
 
 var questions = [
     
@@ -18,8 +19,8 @@ var questions = [
     question: "WHAT TEAM IS THIS?",
     a:"Minnesota Goofies",
     b:"Minnesota Vikings",
-    c:"Minnesota Norsemen",
-    d:"Minnesota Pups",
+    c:"Minneapolis Goofies",
+    d:"Minneapolis Norsmen",
     name:"q1",
     image:  "./assets/images/Minnesota-Vikings.png",
 
@@ -28,8 +29,8 @@ var questions = [
 
 {   
     question: "WHAT TEAM IS THIS?",
-    a:"New England Nationalist",
-    b:" New England Teamen",
+    a:"Boston Patriots",
+    b:" Boston Hatsmen",
     c:"New England Mad Hatters",
     d:"New England Patriots",
     name:"q1",
@@ -46,6 +47,30 @@ var questions = [
     d:"Green Bay Robin Hoods",
     name:"q1",
     image: "./assets/images/Green-Bay-Packers.png",
+
+    correct:"d",
+},
+
+{   
+    question: "WHAT TEAM IS THIS?",
+    a:"Oakland Pirates",
+    b:"Oakland Sparrows",
+    c:"Oakland Raiders",
+    d:"Califoria Pirates",
+    name:"q1",
+    image: "./assets/images/Oakland-Raiders.png",
+
+    correct:"b",
+},
+
+{   
+    question: "WHAT TEAM IS THIS?",
+    a:"Dallas Cowboys",
+    b:"Houston Woodies",
+    c:"Texas Woodies",
+    d:"Dallas Woodies",
+    name:"q1",
+    image: "./assets/images/Dallas-Cowboys.png",
 
     correct:"d",
 },
@@ -75,12 +100,24 @@ var generateQuestion = function(obj){
 		var d = $('<input type="radio">').attr('name', obj.name);
 		dDiv.append(d);
         dDiv.append(obj.d);
+
+       /* if(obj.correct === "a"){
+			a.attr('correct', "true");
+		}else if(obj.correct === "b"){
+			b.attr('correct', "true");
+		}else if(obj.correct === "c"){
+			c.attr('correct', "true");
+		}else if(obj.correct === "d"){
+			d.attr('correct', "true");
+		}*/
         
 $('#questionbox').append(img);
 form.append(question);
 form.append(aDiv, bDiv, cDiv, dDiv);
 $('#answerbox').append(form);
 }
+
+
 
 generateQuestion(questions[3]);
 
