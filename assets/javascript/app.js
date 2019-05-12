@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-var img = $('<img>');
 
 var questions = [
     
@@ -11,7 +10,7 @@ var questions = [
     c:"Seatle Seahawks",
     d:"New York Giants",
     name:"q1",
-    image: img.attr('src', "./assets/images/Houston-Texans.png"),
+    image:  "./assets/images/Houston-Texans.png",
 
     correct:"b",
 },
@@ -22,7 +21,7 @@ var questions = [
     c:"Seatle Seahawks",
     d:"New York Giants",
     name:"q1",
-    image: img.attr('src', "./assets/images/Minnesota-Vikings.png"),
+    image:  "./assets/images/Minnesota-Vikings.png",
 
     correct:"b",
 },
@@ -30,11 +29,11 @@ var questions = [
 {   
     question: "WHAT TEAM IS THIS?",
     a:"Minnesota Vikings",
-    b:"Houston Texans",
+    b:" Texans",
     c:"Seatle Seahawks",
     d:"New York Giants",
     name:"q1",
-    image: img.attr('src', "./assets/images/New-England-Patriots.png"),
+    image: "./assets/images/New-England-Patriots.png",
 
     correct:"b",
 },
@@ -43,7 +42,11 @@ var questions = [
 
 var generateQuestion = function(obj){
 
-	var form = $("<form>");
+    var form = $("<form>");
+        var img = $('<img>').attr('src',obj.image);
+        img.append(obj.name);
+        
+
 		var question = $('<h2>').text(obj.question);
 		var aDiv = $('<div>');
 		var bDiv = $('<div>');
