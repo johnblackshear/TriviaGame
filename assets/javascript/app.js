@@ -5,10 +5,10 @@ var questions = [
     
 {   
     question: "WHAT TEAM IS THIS?",
-    a:"Minnesota Vikings",
-    b:"Houston Texans",
-    c:"Seatle Seahawks",
-    d:"New York Giants",
+    a:"Texas Oilers",
+    b:"Houston Sulleys",
+    c:"Houston Texans",
+    d:"Dallas Monstars",
     name:"q1",
     image:  "./assets/images/Houston-Texans.png",
 
@@ -16,28 +16,39 @@ var questions = [
 },
 {   
     question: "WHAT TEAM IS THIS?",
-    a:"Minnesota Vikings",
-    b:"Houston Texans",
-    c:"Seatle Seahawks",
-    d:"New York Giants",
+    a:"Minnesota Goofies",
+    b:"Minnesota Vikings",
+    c:"Minnesota Norsemen",
+    d:"Minnesota Pups",
     name:"q1",
     image:  "./assets/images/Minnesota-Vikings.png",
 
-    correct:"b",
+    correct:"a",
 },
 
 {   
     question: "WHAT TEAM IS THIS?",
-    a:"Minnesota Vikings",
-    b:" Texans",
-    c:"Seatle Seahawks",
-    d:"New York Giants",
+    a:"New England Nationalist",
+    b:" New England Teamen",
+    c:"New England Mad Hatters",
+    d:"New England Patriots",
     name:"q1",
     image: "./assets/images/New-England-Patriots.png",
 
-    correct:"b",
+    correct:"c",
 },
 
+{   
+    question: "WHAT TEAM IS THIS?",
+    a:"Green Bay Packers",
+    b:" Green Bay Fox Archers",
+    c:"Green Bay FoxBows",
+    d:"Green Bay Robin Hoods",
+    name:"q1",
+    image: "./assets/images/Green-Bay-Packers.png",
+
+    correct:"d",
+},
 ];
 
 var generateQuestion = function(obj){
@@ -71,7 +82,7 @@ form.append(aDiv, bDiv, cDiv, dDiv);
 $('#answerbox').append(form);
 }
 
-generateQuestion(questions[0]);
+generateQuestion(questions[3]);
 
 
 
