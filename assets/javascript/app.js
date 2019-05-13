@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-var score = 0
-
 var questions = [
     
 {   
@@ -76,10 +74,41 @@ var questions = [
 },
 ];
 
+//global variables
+
+var number = 30; 
+var invtervalId;
+
+function run(){
+invtervalId = setInterval(decrement, 1000);
+}
+
+function decrement(){
+    number--;
+    $('#show-number').html("<h2>" + number + "</h2>");
+    if (number === 0) {
+        stop();
+    }
+}
+
+function stop(){
+    clearInterval(invtervalId);
+}
+
+
+ $('#start-button').on("click", function(){
+    $('.box-container').show();
+    $('#button-start').hide();
+    
+})
+
+console.log(number);
+decrement();
+
 var generateQuestion = function(obj){
 
+    var img = $('<img>').attr('src',obj.image);
     var form = $("<form>");
-        var img = $('<img>').attr('src',obj.image);
         img.append(obj.name);
         
 
@@ -101,7 +130,17 @@ var generateQuestion = function(obj){
 		dDiv.append(d);
         dDiv.append(obj.d);
 
-       /* if(obj.correct === "a"){
+      
+
+        
+        
+        /*var abutton= $('#aButton').text(obj.a);
+        var bbutton= $('#bButton').text(obj.b);
+        var cbutton= $('#cButton').text(obj.c);
+        var dbutton= $('#dButton').text(obj.d);*/
+        
+
+       if(obj.correct === "a"){
 			a.attr('correct', "true");
 		}else if(obj.correct === "b"){
 			b.attr('correct', "true");
@@ -109,7 +148,7 @@ var generateQuestion = function(obj){
 			c.attr('correct', "true");
 		}else if(obj.correct === "d"){
 			d.attr('correct', "true");
-		}*/
+		};
         
 $('#questionbox').append(img);
 form.append(question);
@@ -119,16 +158,51 @@ $('#answerbox').append(form);
 
 
 
-generateQuestion(questions[3]);
+var gradeQuestion = function(obj){
+    //check if there are any radios that have been clicked
+    //if it has been checked
+    //find checked radio, check for correct="true" attr
+    console.log("gradeQuestion()", obj);
+    var output = 0;
+    obj.find('input').each(function(){
+         if($(this).is(':checked')) {
+             console.log("FOUND CHECKED");
+              if($(this).attr('correct') === "true"){
+                  console.log('returning + 1');
+                  output =  1;//you did it!
+              } else{
+                  console.log('returning - 1');
+                  output= -1;//WRONG
+              }
+          }	
+    });
+    return output;
+}
+
+var gradePage = function(){
+    console.log("gradePage");
+    var score = 0;
+    $('form').each(function(){
+        console.log("adding ",parseInt(gradeQuestion($(this))), " to score");
+        score += parseInt(gradeQuestion($(this)));
+    })
+    console.log(score);
+    return score;
+
+}
+
+generateQuestion(questions[0])
+
+
+$('#my-button').click(gradePage);
+$('#my-button').click(function(){
+    alert("been clicked"); 
+})
 
 
 
    
-    // code for image
-    /*var img = $('<img>');
-    img.attr('src', "./assets/images/Houston-Texans.png");
-    (img).append()
-    $('#questionbox').append(img);*/
+    
 
 
 

@@ -12,6 +12,7 @@ position: relative;
     background-color: #ffffff;
     margin-bottom: 20px;
 }
+
 #title{
     font-size: 50px;
     color:#da0f10;
@@ -41,6 +42,10 @@ position: relative;
     margin-right: 10px;
     margin-left: 15px;
     
+}
+
+.box-container{
+display: none;
 }
 
 #questionbox{
@@ -90,8 +95,20 @@ h4{
     text-align: center;
 }
 
-button{
-    margin: 0 auto;
-    float:bottom;
+#answers{
+    display: flex;
+    justify-content: center;
+}
+
+#my-button{
     position: absolute;
+   margin: 0 auto;
+    display: inline-block;
+    bottom: 0px;
+}
+
+#button-start{
+    display: flex;
+  align-items: center;
+  justify-content: center;
 }
