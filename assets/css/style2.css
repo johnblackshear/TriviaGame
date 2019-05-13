@@ -51,7 +51,12 @@ h4{
     height: 100%;
     margin: auto;
     margin-top: 80px;
-    width: 600px;
-    height: 400px;
+    width: 800px;
+    height: 600px;
     
+  }
+
+  .imageDiv{
+      width: 80px;
+      height: 80px;
   }
