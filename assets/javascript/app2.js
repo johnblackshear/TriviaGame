@@ -1,8 +1,8 @@
 $(document).ready(function (){
 
-var rigthAnswers = 0;
+var rightAnswers = 0;
 var wrongAnswers = 0;
-var unaswered= 0;
+var unanswered= 0;
 var timeRemaining = 20;
 var index = 0;
 var timerId = 0;
@@ -26,14 +26,13 @@ var game = [{
     image: ("./assets/images/New-England-Patriots.png")
 }];
 
-alert("you are linked")
 
 // function that starts the game
-function startTriva(){
+function start(){
     $('.start-button').remove();
-    rigthAnswers = 0;
+    rightAnswers = 0;
     wrongAnswers = 0;
-    unaswered = 0;
+    unanswered = 0;
     loadQuestions();
 }
 
@@ -51,17 +50,18 @@ function loadQuestions(){
     $('.question').html(question);
     for(var i = 0; i < 4; i++){
         var answer = game[index].answer[i];
-        $('.asnwers').append('<h4 class = answerAll id=' + i + '>')
+        $('.answers').append('<h4 class = answerAll id=' + i + '>' + answer  + '</h4>');
     }
-}
+
 
 $('h4').click(function(){
     var id = $(this).attr('id');
     if(id === correct){
-        answered === true;
+        answered = true;
         $('.question').text("The answer is: " + game[index].answer[correct]);
         rightAnswer();
     }else{
+        answered = true;
         $('.question').text("your choice was: " + game[index].answer[id] + " was wrong! The right answer is: " + game[index].answer[correct]);
         wrongAnswer();
     }
@@ -70,6 +70,12 @@ $('h4').click(function(){
 
 function timer(){
     if (timeRemaining === 0){
+        answered  = true;
+        clearInterval(timerId);
+        $('question').text("The right answer is: " + game[index].answer[correct]);
+        unAnswered();
+
+    }else if (answered === true){
         clearInterval(timerId);
     }else{
         timeRemaining--;
@@ -78,13 +84,13 @@ function timer(){
 }
 
 function rightAnswer(){
-    rigthAnswers++;
+    rightAnswers++;
     $(".timeRemaining").text("Great Job! You have answered right!")
     nextRound();
 }
 
-function unAnswer(){
-    unaswered++;
+function unAnswered(){
+    unanswered++;
     $('.timeRemaining').text("Why no choice?")
     nextRound();
 }
@@ -95,12 +101,35 @@ function wrongAnswer(){
     nextRound();
 }
 
-
-
+function nextRound(){
+    $(".questionImage").remove();
+    $(".answersAll").remove();
+    $('.answers').append('<img class=answerImage width="150" height"150 src="' + game[index].image + ' ">');
+    index++;
+    if(index < game.length){
+        setTimeout(function(){
+            loadQuestions();
+            $('.answerImage').remove();
+        }, 5000);
+    }else{
+        setTimeout(function(){
+            $('.question').remove();
+            $('.timeRemaing').remove();
+            $('.answerImage').remove();
+            $('.answers').append('<h4 class= answeAll>Right Answers: ' + rightAnswers + '</h4>' );
+            $('.answers').append('<h4 class= answeAll>Wrong Answers: ' + wrongAnswers + '</h4>' );
+            $('.answers').append('<h4 class= answeAll>Unanswered Answers: ' + unanswered + '</h4>');
+            setTimeout(function () {
+                location.reload();
+            }, 7000);
+        }, 5000);
+    }
+};
 
 $('.startButton').on("click", function () {
-    $('.startButton');
-    startTriva();
+    $('startButton');
+    start();
+    alert("clicked");
 
 });
 
