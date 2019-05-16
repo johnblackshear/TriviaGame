@@ -52,11 +52,19 @@ h4{
     margin: auto;
     margin-top: 80px;
     width: 800px;
-    height: 600px;
+    height: 500px;
     
   }
 
   .imageDiv{
       width: 150px;
       height: 150px;
+  }
+
+  .answerImage{
+      margin: auto;
+  }
+
+  h6{
+      text-align: center;
   }
